@@ -64,13 +64,14 @@ const useRegisterStore = defineStore('register', {
     },
     handleValidateCode(registerFormRef: any) {
       registerFormRef
-        .validateField('phoneNumber')
+        .validateField(['phoneNumber','email'])
         .then((ValidatedError: ValidatedError) => {
           if (ValidatedError) {
             return;
           } else {
             const oPostData: ValidateCodeRequest = {
               phone: this.registerFormInfo.phoneNumber,
+              email: this.registerFormInfo.email
             };
             const res: Promise<ValidateCodeResponse> =
               sendValidateCode(oPostData);
