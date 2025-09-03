@@ -56,14 +56,6 @@
           <icon-phone />
         </template>
       </a-input>
-      <a-button
-        type="primary"
-        size="large"
-        :disabled="isSendValidateCode"
-        class="w-[160px]"
-        @click="handleValidateCode(registerForm)"
-        >{{ buttonContent }}</a-button
-      >
     </a-form-item>
     <a-form-item
       field="email"
@@ -124,6 +116,14 @@
           <icon-safe />
         </template>
       </a-input>
+      <a-button
+        type="primary"
+        size="large"
+        :disabled="isSendValidateCode"
+        class="w-[160px]"
+        @click="handleValidateCode(registerForm)"
+        >{{ buttonContent }}</a-button
+      >
     </a-form-item>
   </a-form>
   <a-button
