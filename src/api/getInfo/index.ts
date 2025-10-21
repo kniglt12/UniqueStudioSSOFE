@@ -1,6 +1,4 @@
-import {
-  getInfoResponse,
-} from '@/constants/httpMsg/register/InfoStatusMsg';
+import { getInfoResponse } from '@/constants/httpMsg/register/InfoStatusMsg';
 
 import request from '../_request';
 

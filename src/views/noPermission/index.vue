@@ -6,9 +6,9 @@
   >
     <template #extra>
       <a-space>
-        <a-button type="primary" @click="returnLogin">{{
-          $t('noPermission.back')
-        }}</a-button>
+        <a-button type="primary" @click="returnLogin">
+          {{ $t('noPermission.back') }}
+        </a-button>
       </a-space>
     </template>
   </a-result>

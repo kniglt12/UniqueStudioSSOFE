@@ -6,8 +6,15 @@
     <ul class="right-side">
       <li>
         <a-dropdown trigger="click">
-          <a-avatar :size="32" :style="{ marginRight: '8px', cursor: 'pointer', backgroundColor: '#3370ff' }">
-            {{ avatarName }}
+          <a-avatar
+            :size="32"
+            :style="{
+              marginRight: '8px',
+              cursor: 'pointer',
+              backgroundColor: '#3370ff',
+            }"
+          >
+            {{ editStore.avatarName }}
           </a-avatar>
           <template #content>
             <a-doption @click="handleLogout">{{ '登出' }}</a-doption>
@@ -23,22 +30,11 @@ import LogoSVG from '@/assets/svg/logo.svg';
 
 import { useLogoutStore } from '@/views/login/store';
 import useEditStore from '@/views/user/editInfo/store/useEdit';
-import { ref, watchEffect } from 'vue';
 
 const logoutStore = useLogoutStore();
 const { handleLogout } = logoutStore;
 
 const editStore = useEditStore();
-const { getUserInfo } = editStore;
-
-const avatarName: any = ref(null);
-
-watchEffect(async () => {
-  getUserInfo().then((infoData: any) => {
-    avatarName.value = infoData.name.slice(0, 1);
-  })
-})
-
 </script>
 
 <style scoped lang="less">

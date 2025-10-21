@@ -1,3 +1,5 @@
+import { InfoData } from '@/constants/httpMsg/register/InfoStatusMsg';
+
 export const enum Gender {
   male = 1,
   female = 2,
@@ -12,21 +14,22 @@ export interface EditFormInfo {
 }
 
 export interface UserInfo {
-  name: string;
-  gender: Gender | null;
-  phoneNumber: string;
-  email: string;
+  name: InfoData['name'];
+  gender: InfoData['gender'];
+  phoneNumber: InfoData['phone'];
+  email: InfoData['email'];
+  roles: InfoData['roles'];
 }
 
 export interface PermissionFormInfo {
   phone: string;
   joinTime: string;
   group: string;
-  role: string;  
+  role: string;
 }
 
 export interface EditStore {
   editFormInfo: EditFormInfo;
   userInfo: UserInfo;
-  permissionFormInfo: PermissionFormInfo
+  permissionFormInfo: PermissionFormInfo;
 }
