@@ -1,11 +1,16 @@
-/* eslint-disable quote-props */
+// 解决 ts 类型warning
 import type { Linter } from 'eslint';
+// ts 规则
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
+// ts 解析器
 import tsParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
-import prettier from 'eslint-plugin-prettier';
+// 解决 eslint 和 prettier 的共存问题
+import prettier from '@vue/eslint-config-prettier';
 import vue from 'eslint-plugin-vue';
+// .vue 解析器
 import vueParser from 'vue-eslint-parser';
+// airbnb 规则
 import { configs as airbnbConfigs } from 'eslint-config-airbnb-extended/legacy';
 import path from 'node:path';
 
@@ -56,7 +61,6 @@ export default [
     plugins: {
       '@typescript-eslint': typescriptEslint,
       'import': importPlugin,
-      prettier,
       vue,
     },
     languageOptions: {
@@ -143,4 +147,6 @@ export default [
       'prettier/prettier': 1,
     },
   },
+  // 按要求放在最后
+  prettier,
 ] as Linter.Config[];
