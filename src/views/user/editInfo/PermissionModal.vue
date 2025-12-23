@@ -57,6 +57,7 @@ import { inject, ref, watch } from 'vue';
 import { getAllUsers, getAllUsersItemT } from '@/api/getAllUsers';
 import { PermissionRequest } from '@/constants/httpMsg/register/PermissionMsg';
 import { Message } from '@arco-design/web-vue';
+import i18n from '@/locale';
 import { useEditStore } from './store';
 
 defineProps<{
@@ -94,6 +95,17 @@ const handleSubmit = () => {
     return;
   }
 
-  datas.forEach(editStore.handlePermission);
+  Promise.all(
+    datas.map(async (data) => {
+      const res = await editStore.handlePermission(data);
+      if (res !== null) {
+        Message.success(`${i18n.global.t('edit.success')}:${data.phone}`);
+      } else {
+        Message.error(`请求错误:${data.phone}`);
+      }
+    }),
+  ).then(() => {
+    isPermissionOpen.value = false;
+  });
 };
 </script>

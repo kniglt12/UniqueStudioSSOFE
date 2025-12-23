@@ -88,14 +88,7 @@ const useEditStore = defineStore('edit', () => {
 
   function handlePermission(data: PermissionRequest) {
     const res: Promise<PermissionResponse> = permission(data);
-    res.then((response) => {
-      if (response !== null) {
-        Message.success(`${i18n.global.t('edit.success')}:${data.phone}`);
-        router.push('/user/edit-info').then(() => {
-          router.go(0);
-        });
-      }
-    });
+    return res;
   }
 
   function getUserInfo(): Promise<InfoData> {
