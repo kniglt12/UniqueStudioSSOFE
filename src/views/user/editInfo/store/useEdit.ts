@@ -31,6 +31,7 @@ const useEditStore = defineStore('edit', () => {
     gender: null,
     password: '',
     email: '',
+    qq: '',
   });
 
   const userInfo = reactive<UserInfo>({
@@ -40,6 +41,7 @@ const useEditStore = defineStore('edit', () => {
     email: '',
     roles: [],
     groups: [],
+    qq: '',
   });
   const avatarName = computed(() => userInfo.name.slice(0, 1));
 
@@ -59,7 +61,7 @@ const useEditStore = defineStore('edit', () => {
 
       const oPostData: EditRequest = {};
 
-      const optionalSet = (key: keyof EditRequest) => {
+      const optionalSet = (key: keyof EditFormInfo) => {
         if (!editFormInfo[key]) return;
 
         if (key === 'password') {
@@ -67,12 +69,21 @@ const useEditStore = defineStore('edit', () => {
           return;
         }
 
+        if (key === 'qq') {
+          if (editFormInfo.qq !== userInfo.qq) {
+            oPostData.qq_account = editFormInfo.qq;
+          }
+          return;
+        }
+
         if (editFormInfo[key] !== userInfo[key]) {
-          oPostData[key] = editFormInfo[key] as any;
+          oPostData[key as keyof EditRequest] = editFormInfo[key] as any;
         }
       };
 
-      (Object.keys(editFormInfo) as (keyof EditRequest)[]).forEach(optionalSet);
+      (Object.keys(editFormInfo) as (keyof EditFormInfo)[]).forEach(
+        optionalSet,
+      );
 
       const res: Promise<EditResponse> = edit(oPostData);
       res.then((response) => {
@@ -104,10 +115,12 @@ const useEditStore = defineStore('edit', () => {
             userInfo.email = response.data.email;
             userInfo.roles = response.data.roles;
             userInfo.groups = response.data.groups;
+            userInfo.qq = response.data.qq_account;
 
             editFormInfo.name = userInfo.name;
             editFormInfo.gender = userInfo.gender;
             editFormInfo.email = userInfo.email;
+            editFormInfo.qq = userInfo.qq;
 
             resolve(response.data);
           }

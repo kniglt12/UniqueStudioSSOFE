@@ -11,6 +11,7 @@ export interface EditFormInfo {
   gender: Gender | null;
   password: string;
   email: string;
+  qq: string;
 }
 
 export interface UserInfo {
@@ -20,6 +21,7 @@ export interface UserInfo {
   email: InfoData['email'];
   roles: InfoData['roles'];
   groups: InfoData['groups'];
+  qq: InfoData['qq_account'];
 }
 
 export interface PermissionFormInfo {

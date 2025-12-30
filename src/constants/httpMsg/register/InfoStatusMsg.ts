@@ -11,6 +11,7 @@ export interface InfoData {
   join_time: string;
   groups: string[];
   lark_union_id: string;
+  qq_account: string;
 }
 
 export type getInfoResponse = HttpRes<InfoData>;

@@ -80,6 +80,28 @@
       </a-input>
     </a-form-item>
     <a-form-item
+      field="qq"
+      hide-label
+      :rules="[
+        { required: true, message: $t('register.form.qq.errMsg') },
+        {
+          match: /^\d{1,15}$/,
+          message: $t('register.form.qq.formatErr'),
+        },
+      ]"
+    >
+      <a-input
+        v-model="registerFormInfo.qq"
+        size="large"
+        :placeholder="$t('register.form.qq.placeholder')"
+        allow-clear
+      >
+        <template #prefix>
+          <icon-message />
+        </template>
+      </a-input>
+    </a-form-item>
+    <a-form-item
       field="password"
       hide-label
       :rules="[

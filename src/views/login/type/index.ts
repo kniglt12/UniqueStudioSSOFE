@@ -32,6 +32,7 @@ export interface RegisterFormInfo {
   password: string;
   validateCode: string;
   email: string;
+  qq: string;
 }
 
 export interface RegisterStore {

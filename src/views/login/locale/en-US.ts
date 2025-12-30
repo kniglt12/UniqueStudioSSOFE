@@ -10,6 +10,12 @@ export default {
   'login.form.forgetPassword': 'Forgot password',
   'login.form.login': 'login',
   'login.form.register': 'register account',
+  'register.form.qq': 'Please enter QQ number',
+  'edit.qq': 'QQ Number',
+  'edit.form.qq.formatErr': 'QQ number format error',
+  'register.form.qq.placeholder': 'Please enter QQ number',
+  'register.form.qq.errMsg': 'QQ number cannot be empty',
+  'register.form.qq.formatErr': 'QQ number format error',
   'login.banner.slogan1': 'Out-of-the-box high-quality template',
   'login.banner.subSlogan1':
     'Rich page templates, covering most typical business scenarios',

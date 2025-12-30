@@ -8,6 +8,7 @@ export interface RegisterRequest {
   password: string;
   validate_code: string;
   email: string;
+  qq_account: string;
 }
 
 export type RegisterResponse = HttpRes<{
