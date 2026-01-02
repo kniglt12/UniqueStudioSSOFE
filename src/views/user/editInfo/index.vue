@@ -148,6 +148,28 @@
         </a-input>
       </a-form-item>
       <a-form-item
+        field="qq"
+        hide-label
+        :rules="[
+          { required: false, message: $t('register.form.qq.errMsg') },
+          {
+            match: /^\d{1,15}$/,
+            message: $t('edit.form.qq.formatErr'),
+          },
+        ]"
+      >
+        <a-input
+          v-model="editFormInfo.qq"
+          size="large"
+          :placeholder="$t('register.form.qq')"
+          allow-clear
+        >
+          <template #prefix>
+            <icon-message />
+          </template>
+        </a-input>
+      </a-form-item>
+      <a-form-item
         field="password"
         hide-label
         :rules="[
@@ -235,6 +257,10 @@ const data = computed<DataItem[]>(() => [
   {
     label: t('edit.email'),
     value: userInfo.value.email,
+  },
+  {
+    label: t('edit.qq'),
+    value: userInfo.value.qq,
   },
 ]);
 

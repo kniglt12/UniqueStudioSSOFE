@@ -25,6 +25,7 @@ const useRegisterStore = defineStore('register', {
       password: '',
       validateCode: '',
       email: '',
+      qq: '',
     },
     isSendValidateCode: false,
     buttonContent: i18n.global.t('register.getValidateCode'),
@@ -42,6 +43,7 @@ const useRegisterStore = defineStore('register', {
           password: this.registerFormInfo.password,
           validate_code: this.registerFormInfo.validateCode,
           email: this.registerFormInfo.email,
+          qq_account: this.registerFormInfo.qq,
         };
         const res: Promise<RegisterResponse> = register(oPostData);
         res.then((response) => {

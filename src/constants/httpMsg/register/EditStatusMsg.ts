@@ -6,6 +6,7 @@ export interface EditRequest {
   gender?: Gender;
   password?: string;
   email?: string;
+  qq_account?: string;
 }
 
 export type EditResponse = HttpRes<{
